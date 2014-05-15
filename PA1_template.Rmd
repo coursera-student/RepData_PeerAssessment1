@@ -112,6 +112,15 @@ colnames(daily.steps.complete) <- c("date", "total.steps")
 dim(daily.steps.complete)
 head(daily.steps.complete)
 ```
+```{r echo=TRUE}
+## Mean total number of steps taken per day
+mean(daily.steps.complete$total.steps)
+
+## Median total number of steps taken per day
+median(daily.steps.complete$total.steps)
+```
+
+
 > To answer to the above question,let's visualize the two histograms side by side. The left plot represents the histogram of the total number of steps taken each day with the missing values (same histogram as the one in the first part of the project). The right plot is the histogram of the total number of steps taken each day without the missing values. Note that I re-scaled both histograms to be on the same y-axis range for better comparison.
 
 ```{r echo=TRUE, fig.show='hold', fig.height=5.5, fig.width=5.5}
@@ -131,7 +140,7 @@ ggplot(daily.steps.complete, aes(total.steps)) +
     labs(x = "total number of steps") +
     labs(title = "Total number of steps taken per day \n NO MISSING VALUES")
 ```
-> The shape of both histograms is roughtly similar. However, the range values for the count differs. It varies between 0 and about 9 for the histogram with missing values (i.e. left plot), whereas the count values for the histogram without missing values (right plot) vary between 0 and about 12. It is also worth noticing that the maximum values differ, and correspond to 9 and 12 for the left and right histograms, respectively. Moreover, the total number of steps reaches its maximum 10,000 steps for the left plot, but is approaximately at 11,000 steps for the right plot. Therefore , imputing missing data on the estimates of the total daily number of steps impacts counts as well as maximum values in this specific case.  
+> The shape of both histograms is roughly similar. However, the range values for the count differs. It varies between 0 and about 9 for the histogram with missing values (i.e. left plot), whereas the count values for the histogram without missing values (right plot) vary between 0 and about 12. The histograms show differences between counts of maximum values. They correspond to 9 and 12 for the left and right histograms, respectively. However, calcluations of mean and median for the dataset without missing values indicates that they are not diffeerent from the mean and median from the dataset with missing values (~ 10,766). Therefore, imputing missing data on the estimates of the total daily number of steps mainly impacts counts and maximum values but does not impact maximum and median values in this specific case.  
 
 ## Are there differences in activity patterns between weekdays and weekends?
 ### 1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
